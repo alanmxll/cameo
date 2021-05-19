@@ -44,3 +44,11 @@ class CaptureManager(object):
     @property
     def isWritingVideo(self):
         return self._videoFilename is not None
+
+    def enterFrame(self):
+        """Capture the next frame, if any."""
+        # But first, check that any previous frame was exited.
+        assert not self._enteredFrame, \
+            'previous enterFrame() had no matching exitFrame()'
+        if self._capture is not None:
+            self._enteredFrame = self._capture.grab()
