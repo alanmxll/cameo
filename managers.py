@@ -127,3 +127,10 @@ class CaptureManager(object):
                 self._videoFilename, self._videoEncoding, fps, size)
 
         self._videoWriter.write(self._frame)
+
+
+class WindowManager(object):
+    def __init__(self, windowName, keypressCallback=None):
+        self.keypressCallback = keypressCallback
+        self._windowName = windowName
+        self._isWindowCreated = False
