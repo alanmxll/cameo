@@ -33,7 +33,7 @@ class Cameo(object):
             if not self._captureManager.isWritingVideo:
                 self._captureManager.startWritingVideo('screencast.avi')
             else:
-                self._captureManager.startWritingVideo()
+                self._captureManager.stopWritingVideo()
         elif keycode == 27:  # escape
             self._windowManager.destroyWindow()
 
