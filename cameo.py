@@ -20,3 +20,19 @@ class Cameo(object):
                 pass
             self._captureManager.exitFrame()
             self._windowManager.processEvent()
+
+    def onKeypress(self, keycode):
+        """Handle a keypress.
+        space -> Take a screenshot.
+        tab -> Start/stop recording a screencast.
+        escape -> Quit.
+        """
+        if keycode == 32:  # space
+            self._captureManager.writeImage('screenshot.png')
+        elif keycode == 9:  # tab
+            if not self._captureManager.isWritingVideo:
+                self._captureManager.startWritingVideo('screencast.avi')
+            else:
+                self._captureManager.startWritingVideo()
+        elif keycode == 27:  # escape
+            self._windowManager.destroyWindow()
